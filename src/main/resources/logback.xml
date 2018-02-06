@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true" scanPeriod="2 seconds" debug="false">
+	
+	<if condition='isNull("logback.envFile")'>
+        <then>
+            <include resource="logback-env.xml"/>
+        </then>
+        <else>
+            <include file="${logback.envFile}"/>
+        </else>
+    </if>
+
+	<appender name="log.console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}	%level	[%thread]	%logger	%msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<logger name="org.springframework" additivity="false">
+		<level value="${spring.log.level}" />
+        <if condition='property("print.log.console").equalsIgnoreCase("true")'>
+            <then>
+                <appender-ref ref="log.console" />
+            </then>
+        </if>
+    </logger>
+
+	<root>
+		<level value="${root.log.level}" />
+		<appender-ref ref="log.console" />
+	</root>
+</configuration>
