@@ -3,7 +3,7 @@
 [JAVA] <br/>
 Version 1.8 or higher <br/>
 [Gradle] <br/>
-Version 2.6 or higher
+Version 2.6 or higher <br/>
 [Eclipse] <br/>
 Eclipse Java EE IDE for Web Developers. <br/>
 
